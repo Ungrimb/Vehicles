@@ -42,13 +42,14 @@ public class Main {
             menuId=0;
         } while (menuId==1);
         do {
-            System.out.println("Introduce el número de ruedas:");
+            System.out.println("Introduce 1 para Bike y 2 para Car:");
             ruedas = sc.nextInt();
-            if (ruedas == 4 || ruedas == 2) {
+            if (ruedas == 1 || ruedas == 2) {
+            	ruedas = ruedas *2;
                 for (int i = 0; i < ruedas; i++) {
                     do {
                         System.out.println("Introduce la marca de la rueda " + i + " :");
-                        brWheel = sc.nextLine();
+                        brWheel = sc.next();
                         if (brWheel.equals("")) {
                             System.out.println("Marca incorrecta");
                         } else menuId=1;
@@ -56,9 +57,7 @@ public class Main {
                     do {
                         System.out.println("Introduce el diametro de la rueda " + i + " :");
                         dWheel = sc.nextDouble();
-                        if (dWheel>0.4 && dWheel<4) {
-                            menuId=0;
-                        } else System.out.println("Diametro entre 0.4 y 4");
+                        menuId = Wheel.Diameter(dWheel);
                     } while (menuId==1);
                     if (ruedas == 2){
                         Wheel wheel = new Wheel(brWheel, dWheel);
